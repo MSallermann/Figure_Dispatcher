@@ -1,0 +1,17 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Example Plot",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/moritz/Coding/plot_repo_template/fig_dispatcher.py",
+            "console": "integratedTerminal",
+            "args": ["/home/moritz/Coding/plot_repo_template/Example_Plot"],
+            "justMyCode": true
+        }
+    ]
+}

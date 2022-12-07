@@ -1,0 +1,17 @@
+figure: 
+  script: "make_figure.main"
+  output_file: "example_figure.png"
+  dpi : 300
+  title : "my figure title"
+depends:
+  data_file:
+    output_files:
+      - "{__paths__.data_path}/subfolder/some_data.txt"
+  rendering:
+    output_files: 
+      - "rendering/rendering.png"
+    callback: "create_rendering.main"
+    some_key: "blablabla"
+meta:
+  meta_key1: "some meta information"
+log: "log.txt"

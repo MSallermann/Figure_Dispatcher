@@ -1,0 +1,22 @@
+figure: 
+  script: make_figure.main
+  output_file: example_figure.png
+  dpi : 300
+depends:
+  data_file:
+    output_files: 
+      - "{__paths__.data_path}/subfolder/some_data.txt"
+  renderings_top:
+    output_files: 
+      - renderings/top_1.png
+      - renderings/top_2.png
+    callback: create_renderings_top.main
+    # always_generate: true
+  rendering_side:
+    output_files: 
+      - renderings/side.png
+    callback: create_rendering_side.main
+    # always_generate: true
+meta:
+  meta1: "I contain some meta information"
+log: log.txt
