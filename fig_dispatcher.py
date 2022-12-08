@@ -117,7 +117,7 @@ class Fig_Dispatcher:
 
         figure_dict["output_file"] = self.process_path(figure_dict["output_file"])
 
-        self.log(f"Figure outpur file {figure_dict['output_file']}")
+        self.log(f"Figure output file: `{figure_dict['output_file']}`")
         self.dict_to_module_vars(module, figure_dict)
         self.dict_to_module_vars(module, folder.get("meta", dict()))
 

@@ -57,7 +57,7 @@ the example figure will be created in the following order
 # Writing the python scripts
 The modules to create the dependencies/figure are completely standard python modules. 
 
-## Passing information form `descriptor.yaml` to python files
+## Passing information from `descriptor.yaml` to python files
 However, one thing should be mentionend: `fig_dispatcher.py` will define module level variables for any dictionary key associated with the dependecies. The dictionary key `key` will be translated to a module level variable `__SOME_KEY__` (all uppercase and with double underscored in the front and back). This makes it possible to pass arbitrary information from `descriptor.yaml` to the python scripts.
 
 __Note:__ 
