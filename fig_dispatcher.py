@@ -57,6 +57,9 @@ class Fig_Dispatcher:
         return module, func
 
     def gather_dependencies(self, folder):
+        if not "depends" in folder:
+            return
+
         dep_gatherer = dependency_gatherer.Dependency_Gatherer(self.verbose)
 
         for dependency_name, dependency_dict in folder["depends"].items():
@@ -122,7 +125,7 @@ class Fig_Dispatcher:
         self.dict_to_module_vars(module, folder.get("meta", dict()))
 
         dict_of_dependency_files = {}
-        for key, val in folder["depends"].items():
+        for key, val in folder.get("depends",{}).items():
             dict_of_dependency_files[key] = val["output_files"]
 
         self.dict_to_module_vars(module, dict_of_dependency_files)
