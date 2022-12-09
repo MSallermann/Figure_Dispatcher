@@ -58,7 +58,7 @@ the example figure will be created in the following order
 The modules to create the dependencies/figure are completely standard python modules. 
 
 ## Passing information from `descriptor.yaml` to python files
-However, one thing should be mentionend: `fig_dispatcher.py` will define module level variables for any dictionary key associated with the dependecies. The dictionary key `key` will be translated to a module level variable `__SOME_KEY__` (all uppercase and with double underscored in the front and back). This makes it possible to pass arbitrary information from `descriptor.yaml` to the python scripts.
+However, one thing should be mentionend: `fig_dispatcher.py` will define module level variables for any dictionary key associated with the dependecies. The dictionary key `key` will be translated to a module level variable `SOME_KEY_` (all uppercase and with an underscore added at the back). This makes it possible to pass arbitrary information from `descriptor.yaml` to the python scripts.
 
 __Note:__ 
 
@@ -72,20 +72,20 @@ In our example the such defined module-level variables are:
 
 In `create_rendering.py`
 ```python
-__SOME_KEY__ = "blablabla"
-__OUTPUT_FILES__ = ["/path/to/rendering/rendering.png"] # Absolute path to output file
-__CALLBACK__ = "create_rendering.main"
-__META_KEY1__ = "some meta information"
+__SOME_KEY_ = "blablabla"
+__OUTPUT_FILES_ = ["/path/to/rendering/rendering.png"] # Absolute path to output file
+__CALLBACK_ = "create_rendering.main"
+__META_KEY1_ = "some meta information"
 ```
 
 In `make_figure.py`
 ```python
-__SCRIPT__ = "make_figure.main"
-__OUTPUT_FILE__ = "/path/to/example_figure.png"
-__DPI__ = 300
-__TITLE__ = "my figure title"
-__META_KEY1__ = "some meta information"
-__RENDERING__ = ["/path/to/rendering/rendering.png"]
+SCRIPT_ = "make_figure.main"
+OUTPUT_FILE_ = "/path/to/example_figure.png"
+DPI_ = 300
+TITLE_ = "my figure title"
+META_KEY1_ = "some meta information"
+RENDERING_ = ["/path/to/rendering/rendering.png"]
 ```
 
 Look for example at the following script from the `Example Plot`, where this functionality is used to infer the location of the `output files` (via `plotter.render_to_png(__OUTPUT_FILES__[0]`) and to print the message `"blablabla"` via `print(__SOME_KEY__)`.

@@ -14,8 +14,8 @@ def main():
     plotter.background_color = "black"
     plotter.arrows()
 
-    if not os.path.exists(os.path.dirname(__OUTPUT_FILES__[0])):
-        os.makedirs(os.path.dirname(__OUTPUT_FILES__[0]))
+    if not os.path.exists(os.path.dirname(OUTPUT_FILES_[0])):
+        os.makedirs(os.path.dirname(OUTPUT_FILES_[0]))
 
-    print(__SOME_KEY__)
-    plotter.render_to_png(__OUTPUT_FILES__[0])
+    print(SOME_KEY_)
+    plotter.render_to_png(OUTPUT_FILES_[0])

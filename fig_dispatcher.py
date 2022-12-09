@@ -38,7 +38,7 @@ class Fig_Dispatcher:
 
     def dict_to_module_vars(self, module, input_dict):
         for key, val in input_dict.items():
-            varname = f"__{key.upper()}__"
+            varname = f"{key.upper()}_"
             setattr(module, varname, val)
             self.log(f"setting {varname} = {val}\n")
 
@@ -66,21 +66,21 @@ class Fig_Dispatcher:
             self.log(f"Adding dependency: `{dependency_name}`\n")
             self.log(pprint.pformat(dependency_dict) + "\n")
 
-            dependency_paths = dependency_dict["output_files"]
+            if "output_files" in dependency_dict:
+                dependency_paths = dependency_dict["output_files"]
 
-            if not type(dependency_paths) == list:
-                raise Exception(
-                    "In dependency `{}`: `output_files` has to given as a list (even for single paths)".format(
-                        dependency_name
+                if not type(dependency_paths) == list:
+                    raise Exception(
+                        "In dependency `{}`: `output_files` has to given as a list (even for single paths)".format(
+                            dependency_name
+                        )
                     )
-                )
 
-            self.log("Replacing dependency output files...\n")
-            self.log(f"Before: {dependency_paths}\n")
-            for i, p in enumerate(dependency_paths):
-                dependency_paths[i] = self.process_path(p)
+                self.log(f"Before: {dependency_paths}\n")
+                for i, p in enumerate(dependency_paths):
+                    dependency_paths[i] = self.process_path(p)
 
-            self.log(f"After: {dependency_paths}\n")
+                self.log(f"After: {dependency_paths}\n")
 
             cb = dependency_dict.get("callback", None)
             self.log(f"callback function = {cb}\n")
@@ -97,7 +97,7 @@ class Fig_Dispatcher:
             dep_gatherer.depends(
                 dependency_paths,
                 cb_func,
-                always_generate=dependency_dict.get("always_generate", False),
+                always_generate = dependency_dict.get("always_generate", False),
             )
             self.log("---\n")
 
@@ -155,6 +155,7 @@ def main(path, verbose):
         dispatcher.log(f"{60*'-'}\n")
 
         dispatcher.gather_dependencies(folder)
+
         dispatcher.log(f"{60*'-'}\n")
         dispatcher.log(f"{'Creating figure':^60}\n")
         dispatcher.log(f"{60*'-'}\n")

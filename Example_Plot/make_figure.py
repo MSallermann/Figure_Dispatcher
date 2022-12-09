@@ -18,10 +18,10 @@ def main():
     ax.plot(data[:, 0], data[:, 1])
 
     ax = fig.add_subplot(gs[0, 1])
-    img_path = __RENDERING__[0]
+    img_path = RENDERING_[0]
     pplot.image_to_ax(ax, img_path)
 
-    print(__META_KEY1__)
+    print(META_KEY1_)
 
-    ax.set_title(__TITLE__)
-    fig.savefig(__OUTPUT_FILE__)
+    ax.set_title(TITLE_)
+    fig.savefig(OUTPUT_FILE_)
